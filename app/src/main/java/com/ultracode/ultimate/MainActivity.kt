@@ -47,7 +47,7 @@ private fun UltraCodeApp() {
                         }
                         Spacer(Modifier.width(10.dp))
                         Column {
-                            Text("ULTRA CODE ULTIMATE", fontWeight = androidx.compose.ui.text.font.FontWeight.Black, color = Color.White)
+                            Text("ULTRA CODE", fontWeight = androidx.compose.ui.text.font.FontWeight.Black, color = Color.White)
                             Text("AI CODING STUDIO", style = MaterialTheme.typography.labelSmall, color = cyan)
                         }
                     }
