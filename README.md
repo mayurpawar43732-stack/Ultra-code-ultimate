@@ -1,4 +1,4 @@
-# Ultra Code Ultimate (Android)
+# Ultra Code (Android)
 
 An Android-first AI coding workspace inspired by agentic coding tools.
 
