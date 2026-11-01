@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Chat
 import androidx.compose.material.icons.filled.Key
 import androidx.compose.material.icons.filled.Memory
 import androidx.compose.material.icons.filled.Terminal
@@ -38,9 +39,16 @@ private fun UltraCodeApp() {
         topBar = {
             TopAppBar(
                 title = {
-                    Column {
-                        Text("ULTRA CODE ULTIMATE", fontWeight = androidx.compose.ui.text.font.FontWeight.Black, color = Color.White)
-                        Text("AI CODING STUDIO • ANDROID", style = MaterialTheme.typography.labelSmall, color = cyan)
+                    Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
+                        Surface(color = Color(0xFF06152A), shape = MaterialTheme.shapes.medium) {
+                            Text("UC", Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
+                                color = cyan, fontWeight = androidx.compose.ui.text.font.FontWeight.Black)
+                        }
+                        Spacer(Modifier.width(10.dp))
+                        Column {
+                            Text("ULTRA CODE ULTIMATE", fontWeight = androidx.compose.ui.text.font.FontWeight.Black, color = Color.White)
+                            Text("AI CODING STUDIO", style = MaterialTheme.typography.labelSmall, color = cyan)
+                        }
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = panel)
@@ -48,16 +56,18 @@ private fun UltraCodeApp() {
         },
         bottomBar = {
             NavigationBar(containerColor = panel) {
-                NavigationBarItem(selected = tab == 0, onClick = { tab = 0 }, icon = { Icon(Icons.Default.Terminal, null) }, label = { Text("Workspace") })
-                NavigationBarItem(selected = tab == 1, onClick = { tab = 1 }, icon = { Icon(Icons.Default.Memory, null) }, label = { Text("Local AI") })
-                NavigationBarItem(selected = tab == 2, onClick = { tab = 2 }, icon = { Icon(Icons.Default.Key, null) }, label = { Text("API Keys") })
+                NavigationBarItem(selected = tab == 0, onClick = { tab = 0 }, icon = { Icon(Icons.Default.Chat, null) }, label = { Text("Chat") })
+                NavigationBarItem(selected = tab == 1, onClick = { tab = 1 }, icon = { Icon(Icons.Default.Terminal, null) }, label = { Text("Workspace") })
+                NavigationBarItem(selected = tab == 2, onClick = { tab = 2 }, icon = { Icon(Icons.Default.Memory, null) }, label = { Text("Local AI") })
+                NavigationBarItem(selected = tab == 3, onClick = { tab = 3 }, icon = { Icon(Icons.Default.Key, null) }, label = { Text("API Keys") })
             }
         }
     ) { padding ->
         Box(Modifier.padding(padding).fillMaxSize()) {
             when (tab) {
-                0 -> ProjectWorkspaceScreen()
-                1 -> LocalModelsScreen()
+                0 -> ChatScreen()
+                1 -> ProjectWorkspaceScreen()
+                2 -> LocalModelsScreen()
                 else -> ProviderSettingsScreen()
             }
         }
